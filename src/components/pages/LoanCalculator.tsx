@@ -3,9 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../ui
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { Button } from '../ui/button';
 import { Calculator, DollarSign, TrendingUp } from 'lucide-react';
-import { siteConfig } from '../../config/siteConfig';
 
 export function LoanCalculator() {
   const [vehiclePrice, setVehiclePrice] = useState<number>(200000);
@@ -71,7 +69,7 @@ export function LoanCalculator() {
                     id="vehicle-price"
                     type="number"
                     value={vehiclePrice}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVehiclePrice(Number(e.target.value))}
+                    onChange={(e) => setVehiclePrice(Number(e.target.value))}
                     className="pl-12"
                     min="0"
                     step="1000"
@@ -91,7 +89,7 @@ export function LoanCalculator() {
                     id="down-payment"
                     type="number"
                     value={downPayment}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDownPayment(Number(e.target.value))}
+                    onChange={(e) => setDownPayment(Number(e.target.value))}
                     className="pl-12"
                     min="0"
                     max={vehiclePrice}
@@ -104,7 +102,7 @@ export function LoanCalculator() {
                   max={vehiclePrice}
                   step="1000"
                   value={downPayment}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDownPayment(Number(e.target.value))}
+                  onChange={(e) => setDownPayment(Number(e.target.value))}
                   className="w-full"
                 />
               </div>
@@ -133,7 +131,7 @@ export function LoanCalculator() {
                     id="interest-rate"
                     type="number"
                     value={interestRate}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInterestRate(Number(e.target.value))}
+                    onChange={(e) => setInterestRate(Number(e.target.value))}
                     className="pr-8"
                     min="0"
                     max="10"
@@ -267,7 +265,7 @@ export function LoanCalculator() {
               <li>• This calculator provides estimates only. Actual rates may vary by bank and your credit profile.</li>
               <li>• Interest rates shown are indicative. Contact banks directly for current rates.</li>
               <li>• Additional costs may include insurance, road tax, and maintenance.</li>
-              <li>• Loan approval is subject to bank\'s credit assessment.</li>
+              <li>• Loan approval is subject to bank's credit assessment.</li>
             </ul>
           </div>
         </div>
