@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Globe, Shield, Star, TrendingUp } from 'lucide-react'
+import { Search, Shield, Star, TrendingUp } from 'lucide-react'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 import Input from '../ui/Input'
