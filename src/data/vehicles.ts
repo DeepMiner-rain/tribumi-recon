@@ -1,188 +1,172 @@
-import { vehicleImages } from '../assets/images'
-
 export interface Vehicle {
-  id: string
-  brand: string
-  model: string
-  year: number
-  price: number
-  mileage: number
-  country: 'japan' | 'uk' | 'australia'
-  transmission: 'Auto' | 'Manual'
-  fuelType: 'Petrol' | 'Diesel' | 'Hybrid' | 'Electric'
-  engine: string
-  color: string
-  images: string[]
-  features: string[]
-  verified: boolean
-  auctionGrade?: string
-  reserved?: boolean
+  id: string;
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  currency: string;
+  mileage: number;
+  country: 'Japan' | 'UK' | 'Australia';
+  transmission: 'Automatic' | 'Manual';
+  fuelType: string;
+  engineSize: string;
+  color: string;
+  bodyType: string;
+  images: string[];
+  status: 'New Arrived' | 'Available' | 'Reserved' | 'Sold' | 'In Transit';
+  auction?: string;
+  chassisNumber?: string;
+  inspectionReport?: string;
+  description: string;
 }
 
-export const vehicles: Vehicle[] = [
+export const mockVehicles: Vehicle[] = [
   {
-    id: 'jpn-001',
+    id: '1',
     brand: 'Toyota',
     model: 'Alphard 2.5 SC',
-    year: 2023,
+    year: 2020,
     price: 280000,
-    mileage: 12000,
-    country: 'japan',
-    transmission: 'Auto',
-    fuelType: 'Hybrid',
-    engine: '2.5L Hybrid',
+    currency: 'MYR',
+    mileage: 45000,
+    country: 'Japan',
+    transmission: 'Automatic',
+    fuelType: 'Petrol',
+    engineSize: '2.5L',
     color: 'Pearl White',
-    images: [vehicleImages.toyotaAlphard],
-    features: ['Power Doors', 'JBL Sound', 'Panoramic Roof', '7-Seater', 'Digital Mirror'],
-    verified: true,
-    auctionGrade: '4.5',
+    bodyType: 'MPV',
+    images: ['https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800'],
+    status: 'Available',
+    auction: 'USS Tokyo',
+    description: 'Well-maintained Toyota Alphard with full service history. Executive lounge package with luxury features.'
   },
   {
-    id: 'jpn-002',
+    id: '2',
+    brand: 'Nissan',
+    model: 'GT-R R35',
+    year: 2019,
+    price: 520000,
+    currency: 'MYR',
+    mileage: 28000,
+    country: 'Japan',
+    transmission: 'Automatic',
+    fuelType: 'Petrol',
+    engineSize: '3.8L Twin Turbo',
+    color: 'Gun Metallic',
+    bodyType: 'Coupe',
+    images: ['https://images.unsplash.com/photo-1742056024244-02a093dae0b5?w=800'],
+    status: 'New Arrived',
+    auction: 'USS Osaka',
+    description: 'Legendary GT-R R35 in excellent condition. Premium edition with Recaro seats and Bose sound system.'
+  },
+  {
+    id: '3',
     brand: 'Honda',
-    model: 'Vezel Hybrid Z',
-    year: 2022,
-    price: 145000,
-    mileage: 18000,
-    country: 'japan',
-    transmission: 'Auto',
-    fuelType: 'Hybrid',
-    engine: '1.5L e:HEV',
-    color: 'Premium Crystal Red',
-    images: [vehicleImages.hondaVezel],
-    features: ['Honda Sensing', 'Panoramic Sunroof', 'LED Headlights', 'Smart Entry'],
-    verified: true,
-    auctionGrade: '4.0',
-  },
-  {
-    id: 'uk-001',
-    brand: 'Mercedes-Benz',
-    model: 'E300 AMG Line',
+    model: 'Civic Type R FK8',
     year: 2021,
     price: 320000,
-    mileage: 25000,
-    country: 'uk',
-    transmission: 'Auto',
-    fuelType: 'Petrol',
-    engine: '2.0L Turbo',
-    color: 'Obsidian Black',
-    images: [vehicleImages.mercedesE300],
-    features: ['AMG Styling', 'Burmester Sound', 'Full Service History', 'Panoramic Roof'],
-    verified: true,
-  },
-  {
-    id: 'uk-002',
-    brand: 'BMW',
-    model: '330i M Sport',
-    year: 2022,
-    price: 285000,
+    currency: 'MYR',
     mileage: 15000,
-    country: 'uk',
-    transmission: 'Auto',
+    country: 'UK',
+    transmission: 'Manual',
     fuelType: 'Petrol',
-    engine: '2.0L TwinPower',
-    color: 'Alpine White',
-    images: [vehicleImages.bmw330i],
-    features: ['M Sport Package', 'HUD', 'Harman Kardon', 'Adaptive LED'],
-    verified: true,
+    engineSize: '2.0L Turbo',
+    color: 'Championship White',
+    bodyType: 'Hatchback',
+    images: ['https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800'],
+    status: 'Available',
+    description: 'Pristine FK8 Type R with low mileage. Full Honda service history and warranty transferable.'
   },
   {
-    id: 'aus-001',
+    id: '4',
     brand: 'Toyota',
-    model: 'Land Cruiser 300 GR Sport',
-    year: 2023,
-    price: 480000,
-    mileage: 8000,
-    country: 'australia',
-    transmission: 'Auto',
-    fuelType: 'Diesel',
-    engine: '3.3L V6 Turbo Diesel',
-    color: 'White Pearl',
-    images: [vehicleImages.toyotaLandCruiser],
-    features: ['GR Sport Package', 'Off-Road Package', 'Premium Sound', '7-Seater'],
-    verified: true,
-  },
-  {
-    id: 'jpn-003',
-    brand: 'Nissan',
-    model: 'Serena e-Power Highway Star',
-    year: 2023,
-    price: 168000,
-    mileage: 9000,
-    country: 'japan',
-    transmission: 'Auto',
-    fuelType: 'Hybrid',
-    engine: '1.2L e-Power',
-    color: 'Diamond Black',
-    images: [vehicleImages.nissanSerena],
-    features: ['ProPilot', 'Around View Monitor', 'Power Doors', '8-Seater'],
-    verified: true,
-    auctionGrade: '5.0',
-  },
-  {
-    id: 'jpn-004',
-    brand: 'Mazda',
-    model: 'CX-60 XD Premium',
-    year: 2023,
-    price: 195000,
-    mileage: 11000,
-    country: 'japan',
-    transmission: 'Auto',
-    fuelType: 'Diesel',
-    engine: '3.3L Skyactiv-D',
-    color: 'Soul Red Crystal',
-    images: [vehicleImages.mazdaCX60],
-    features: ['MRCC', 'Bose Sound', '360 Camera', 'Nappa Leather'],
-    verified: true,
-    auctionGrade: '4.5',
-  },
-  {
-    id: 'uk-003',
-    brand: 'Audi',
-    model: 'A6 45 TFSI Quattro S Line',
+    model: 'Land Cruiser 300 ZX',
     year: 2022,
-    price: 298000,
-    mileage: 18000,
-    country: 'uk',
-    transmission: 'Auto',
-    fuelType: 'Petrol',
-    engine: '2.0L TFSI',
-    color: 'Mythos Black',
-    images: [vehicleImages.audiA6],
-    features: ['Virtual Cockpit', 'Matrix LED', 'B&O Sound', 'Full Service History'],
-    verified: true,
-  },
-  {
-    id: 'jpn-005',
-    brand: 'Lexus',
-    model: 'RX450h F Sport',
-    year: 2023,
-    price: 358000,
-    mileage: 7000,
-    country: 'japan',
-    transmission: 'Auto',
-    fuelType: 'Hybrid',
-    engine: '3.5L V6 Hybrid',
-    color: 'Sonic Titanium',
-    images: [vehicleImages.lexusRX450h],
-    features: ['F Sport Package', 'Mark Levinson', 'Panoramic View', 'Triple Beam LED'],
-    verified: true,
-    auctionGrade: '5.0',
-  },
-  {
-    id: 'uk-004',
-    brand: 'Porsche',
-    model: 'Macan S',
-    year: 2022,
-    price: 425000,
+    price: 680000,
+    currency: 'MYR',
     mileage: 12000,
-    country: 'uk',
-    transmission: 'Auto',
-    fuelType: 'Petrol',
-    engine: '3.0L V6 Turbo',
-    color: 'Miami Blue',
-    images: [vehicleImages.porscheMacan],
-    features: ['Sport Chrono', 'PASM', 'Bose Sound', 'Full Porsche History'],
-    verified: true,
+    country: 'Australia',
+    transmission: 'Automatic',
+    fuelType: 'Diesel',
+    engineSize: '3.3L Twin Turbo',
+    color: 'Attitude Black',
+    bodyType: 'SUV',
+    images: ['https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800'],
+    status: 'Reserved',
+    description: 'Brand new generation Land Cruiser 300. Luxury package with all modern safety features.'
   },
-]
+  {
+    id: '5',
+    brand: 'Mazda',
+    model: 'RX-7 FD3S',
+    year: 2002,
+    price: 180000,
+    currency: 'MYR',
+    mileage: 68000,
+    country: 'Japan',
+    transmission: 'Manual',
+    fuelType: 'Petrol',
+    engineSize: '1.3L Rotary',
+    color: 'Velocity Red',
+    bodyType: 'Coupe',
+    images: ['https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800'],
+    status: 'Available',
+    auction: 'JAA',
+    description: 'Classic RX-7 FD in excellent condition. Well-maintained rotary engine with documented service history.'
+  },
+  {
+    id: '6',
+    brand: 'Mercedes-Benz',
+    model: 'C63 AMG',
+    year: 2020,
+    price: 450000,
+    currency: 'MYR',
+    mileage: 22000,
+    country: 'UK',
+    transmission: 'Automatic',
+    fuelType: 'Petrol',
+    engineSize: '4.0L V8 Biturbo',
+    color: 'Obsidian Black',
+    bodyType: 'Sedan',
+    images: ['https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800'],
+    status: 'Available',
+    description: 'Powerful C63 AMG with full performance package. Premium Plus package with all options.'
+  },
+  {
+    id: '7',
+    brand: 'Subaru',
+    model: 'WRX STI',
+    year: 2018,
+    price: 195000,
+    currency: 'MYR',
+    mileage: 35000,
+    country: 'Japan',
+    transmission: 'Manual',
+    fuelType: 'Petrol',
+    engineSize: '2.5L Turbo',
+    color: 'WR Blue',
+    bodyType: 'Sedan',
+    images: ['https://images.unsplash.com/photo-1554744512-d6c603f27c54?w=800'],
+    status: 'Available',
+    auction: 'USS Saitama',
+    description: 'Iconic WRX STI in signature blue. Modified with quality aftermarket parts, well documented.'
+  },
+  {
+    id: '8',
+    brand: 'Porsche',
+    model: '911 Carrera S',
+    year: 2021,
+    price: 850000,
+    currency: 'MYR',
+    mileage: 8000,
+    country: 'UK',
+    transmission: 'Automatic',
+    fuelType: 'Petrol',
+    engineSize: '3.0L Twin Turbo',
+    color: 'Racing Yellow',
+    bodyType: 'Coupe',
+    images: ['https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800'],
+    status: 'Available',
+    description: 'Stunning 911 Carrera S with Sport Chrono package. Full Porsche warranty remaining.'
+  }
+];
