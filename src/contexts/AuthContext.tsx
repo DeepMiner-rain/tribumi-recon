@@ -19,7 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string) => {
     // Mock login - replace with actual API call
     const mockUser: User = {
       id: '1',

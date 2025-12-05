@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Globe, Calculator, Shield, Search, TrendingUp, CheckCircle } from 'lucide-react'
+import { ArrowRight, Calculator, Shield, CheckCircle } from 'lucide-react'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
 import BrandLogos from '../BrandLogos'

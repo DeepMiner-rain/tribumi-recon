@@ -1,4 +1,4 @@
-import { Award, Users, Globe, TrendingUp } from 'lucide-react'
+import { Award } from 'lucide-react'
 import Card from '../ui/Card'
 import { siteConfig } from '../../config/siteConfig'
 

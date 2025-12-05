@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Filter, MapPin, Gauge, Fuel, Calendar } from 'lucide-react'
+import { MapPin, Gauge, Fuel, Calendar } from 'lucide-react'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 import Badge from '../ui/Badge'
