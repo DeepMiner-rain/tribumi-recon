@@ -6,8 +6,6 @@ import { useState } from 'react';
 import { LoginDialog } from './LoginDialog';
 import { siteConfig } from '../config/siteConfig';
 import { ThemeToggle } from './ThemeToggle';
-import logoLight from "figma:asset/f635104af2cf53ace21b9209950b9e060dad3ab0.png";
-import logoDark from "figma:asset/4b63deb012f64ef7f5125f65b802f44f62c0ec3f.png";
 
 export function Header() {
   const { user, logout } = useAuth();
@@ -41,16 +39,11 @@ export function Header() {
         <div className="flex justify-between items-center relative">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 relative z-10">
-            <img
-              src={logoLight}
-              alt={siteConfig.company.name}
-              className="dark:hidden h-14 w-auto"
-            />
-            <img
-              src={logoDark}
-              alt={siteConfig.company.name}
-              className="hidden dark:block h-14 w-auto"
-            />
+            <div className="flex items-center gap-2">
+              <div className="bg-yellow-500 text-gray-900 px-3 py-2 rounded font-bold text-xl">
+                {siteConfig.company.name}
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

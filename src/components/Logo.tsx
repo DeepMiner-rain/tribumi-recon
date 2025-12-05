@@ -1,6 +1,4 @@
 import { siteConfig } from "../config/siteConfig";
-import logoLight from "figma:asset/f635104af2cf53ace21b9209950b9e060dad3ab0.png";
-import logoDark from "figma:asset/4b63deb012f64ef7f5125f65b802f44f62c0ec3f.png";
 
 interface LogoProps {
   size?: "default" | "xl";
@@ -15,18 +13,9 @@ export function Logo({
 
   return (
     <div className={className}>
-      {/* Light Mode Logo */}
-      <img
-        src={logoLight}
-        alt={siteConfig.company.name}
-        className={`dark:hidden ${height} w-auto`}
-      />
-      {/* Dark Mode Logo */}
-      <img
-        src={logoDark}
-        alt={siteConfig.company.name}
-        className={`hidden dark:block ${height} w-auto`}
-      />
+      <div className={`bg-yellow-500 text-gray-900 px-4 py-2 rounded font-bold ${height} flex items-center justify-center`}>
+        <span className={size === "xl" ? "text-2xl" : "text-xl"}>{siteConfig.company.name}</span>
+      </div>
     </div>
   );
 }
