@@ -1,40 +1,34 @@
-import { Car } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { siteConfig } from "../config/siteConfig";
+import logoLight from "figma:asset/f635104af2cf53ace21b9209950b9e060dad3ab0.png";
+import logoDark from "figma:asset/4b63deb012f64ef7f5125f65b802f44f62c0ec3f.png";
 
 interface LogoProps {
-  className?: string
-  size?: 'sm' | 'md' | 'lg'
-  showText?: boolean
+  variant?: "default" | "light";
+  size?: "default" | "xl";
+  className?: string;
 }
 
-export default function Logo({ className = '', size = 'md', showText = true }: LogoProps) {
-  const sizes = {
-    sm: 'w-6 h-6',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
-  }
-  
-  const textSizes = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-3xl',
-  }
-  
+export function Logo({
+  variant = "default",
+  size = "default",
+  className = "",
+}: LogoProps) {
+  const height = size === "xl" ? "h-20" : "h-14";
+
   return (
-    <Link to="/" className={`flex items-center gap-2 ${className}`}>
-      <div className="relative">
-        <Car className={`${sizes[size]} text-yellow-500`} strokeWidth={2.5} />
-      </div>
-      {showText && (
-        <div className="flex flex-col leading-none">
-          <span className={`${textSizes[size]} font-bold text-gray-900 dark:text-white`}>
-            Tribumi
-          </span>
-          <span className="text-xs text-yellow-500 tracking-wide">
-            RECON
-          </span>
-        </div>
-      )}
-    </Link>
-  )
+    <div className={className}>
+      {/* Light Mode Logo */}
+      <img
+        src={logoLight}
+        alt={siteConfig.company.name}
+        className={`dark:hidden ${height} h-14 w-auto`}
+      />
+      {/* Dark Mode Logo */}
+      <img
+        src={logoDark}
+        alt={siteConfig.company.name}
+        className={`hidden dark:block ${height} h-14 w-auto`}
+      />
+    </div>
+  );
 }
