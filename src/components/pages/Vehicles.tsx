@@ -78,72 +78,81 @@ export default function Vehicles() {
         {/* Vehicle Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredVehicles.map((vehicle) => (
-            <Card key={vehicle.id} hover className="overflow-hidden">
-              {/* Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 mb-4 rounded-lg flex items-center justify-center">
-                <p className="text-4xl">{vehicle.brand === 'Toyota' ? '🚗' : vehicle.brand === 'Honda' ? '🚙' : vehicle.brand === 'Mercedes-Benz' ? '🚘' : vehicle.brand === 'BMW' ? '🏎️' : '🚕'}</p>
-              </div>
-              
-              {/* Badges */}
-              <div className="flex gap-2 mb-3">
-                <Badge variant="primary">
-                  {vehicle.country === 'japan' ? '🇯🇵 Japan' : vehicle.country === 'uk' ? '🇬🇧 UK' : '🇦🇺 Australia'}
-                </Badge>
-                {vehicle.verified && (
-                  <Badge variant="success">✓ Verified</Badge>
-                )}
-                {vehicle.reserved && (
-                  <Badge variant="warning">Reserved</Badge>
-                )}
-              </div>
-              
-              {/* Title */}
-              <h3 className="mb-2">{vehicle.brand} {vehicle.model}</h3>
-              <p className="text-2xl mb-4 text-yellow-500">
-                {formatCurrency(vehicle.price)}
-              </p>
-              
-              {/* Details */}
-              <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <Calendar className="w-4 h-4" />
-                  {vehicle.year}
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <Gauge className="w-4 h-4" />
-                  {formatNumber(vehicle.mileage)} km
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <Fuel className="w-4 h-4" />
-                  {vehicle.fuelType}
-                </div>
-                <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                  <MapPin className="w-4 h-4" />
-                  {vehicle.transmission}
-                </div>
-              </div>
-              
-              {/* Features */}
-              <div className="mb-4">
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Key Features:</p>
-                <div className="flex flex-wrap gap-1">
-                  {vehicle.features.slice(0, 3).map((feature) => (
-                    <span
-                      key={feature}
-                      className="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                  {vehicle.features.length > 3 && (
-                    <span className="text-xs px-2 py-0.5 text-gray-500">+{vehicle.features.length - 3}</span>
+            <Card key={vehicle.id} hover className="overflow-hidden p-0">
+              {/* Vehicle Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img
+                  src={vehicle.images[0]}
+                  alt={`${vehicle.brand} ${vehicle.model}`}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  loading="lazy"
+                />
+                {/* Badges Overlay */}
+                <div className="absolute top-4 left-4 flex gap-2">
+                  <Badge variant="primary">
+                    {vehicle.country === 'japan' ? '🇯🇵 Japan' : vehicle.country === 'uk' ? '🇬🇧 UK' : '🇦🇺 Australia'}
+                  </Badge>
+                  {vehicle.verified && (
+                    <Badge variant="success">✓ Verified</Badge>
                   )}
                 </div>
+                {vehicle.reserved && (
+                  <div className="absolute top-4 right-4">
+                    <Badge variant="warning">Reserved</Badge>
+                  </div>
+                )}
               </div>
               
-              <Button className="w-full" disabled={vehicle.reserved}>
-                {vehicle.reserved ? 'Reserved' : 'View Details'}
-              </Button>
+              {/* Content */}
+              <div className="p-6">
+                {/* Title */}
+                <h3 className="mb-2">{vehicle.brand} {vehicle.model}</h3>
+                <p className="text-2xl mb-4 text-yellow-500">
+                  {formatCurrency(vehicle.price)}
+                </p>
+                
+                {/* Details */}
+                <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <Calendar className="w-4 h-4" />
+                    {vehicle.year}
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <Gauge className="w-4 h-4" />
+                    {formatNumber(vehicle.mileage)} km
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <Fuel className="w-4 h-4" />
+                    {vehicle.fuelType}
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <MapPin className="w-4 h-4" />
+                    {vehicle.transmission}
+                  </div>
+                </div>
+                
+                {/* Features */}
+                <div className="mb-4">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-2">Key Features:</p>
+                  <div className="flex flex-wrap gap-1">
+                    {vehicle.features.slice(0, 3).map((feature) => (
+                      <span
+                        key={feature}
+                        className="text-xs px-2 py-0.5 rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                      >
+                        {feature}
+                      </span>
+                    ))}
+                    {vehicle.features.length > 3 && (
+                      <span className="text-xs px-2 py-0.5 text-gray-500">+{vehicle.features.length - 3}</span>
+                    )}
+                  </div>
+                </div>
+                
+                <Button className="w-full" disabled={vehicle.reserved}>
+                  {vehicle.reserved ? 'Reserved' : 'View Details'}
+                </Button>
+              </div>
             </Card>
           ))}
         </div>
